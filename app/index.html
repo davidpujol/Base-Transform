@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<head>
+  <link href="css/main2.css" rel="stylesheet" />
+  <script type="text/javascript">
+    function update_from_hexa () {
+        if (document.getElementById("value-hexa").value == '') {
+            document.getElementById("value-binary").value = '';
+            document.getElementById("value-dec").value = '';
+        }
+        else {
+            var current = parseInt(document.getElementById("value-hexa").value, 16);
+            document.getElementById("value-binary").value = current.toString(2);
+            document.getElementById("value-dec").value = current;
+        }
+    }
+
+    function update_from_decimal() {
+        if (document.getElementById("value-dec").value == '') {
+            document.getElementById("value-binary").value = '';
+            document.getElementById("value-hexa").value = '';
+        }
+
+        else {
+            var current = parseInt(document.getElementById("value-dec").value, 10);
+            document.getElementById("value-binary").value = current.toString(2);
+            document.getElementById("value-hexa").value = current.toString(16);
+        }
+    }
+
+    function update_from_binary () {
+        if (document.getElementById("value-binary").value == '') {
+            document.getElementById("value-hexa").value = '';
+            document.getElementById("value-dec").value = '';
+        }
+
+        else {
+            var current = parseInt(document.getElementById("value-binary").value, 2);
+            document.getElementById("value-hexa").value = current.toString(16);
+            document.getElementById("value-dec").value = current;
+        }
+    }
+
+    function personalized_update () {
+        if (document.getElementById("ob").value != '' && document.getElementById("fb").value != '' && document.getElementById("ov").value != '') {
+            var current = parseInt(document.getElementById("ov").value, document.getElementById("ob").value);
+            document.getElementById("fv").value = current.toString(document.getElementById("fb").value);
+        }
+
+    }
+
+  </script>
+    <script>
+        document.getElementById("value-hexa").value="";
+        document.getElementById("value-dec").value="";
+        document.getElementById("value-binary").value="";
+    </script>
+    <script>
+        document.getElementById("ob").value = '';
+        document.getElementById("ov").value = '';
+        document.getElementById("fb").value = '';
+        document.getElementById("fv").value = '';
+    </script>
+
+    <div class="top">
+        <h1> BASE TRANSFORM</h1>
+        <p style="font-size: 12px;"> Web designed by: David Pujol Perich</p>
+    </div>
+</head>
+
+<body>
+    <section class="transformation" style="text-align: center">
+        <div class="base">
+            <h3> Hexadecimal </h3>
+            <textarea type="text" id="value-hexa" onkeyup="update_from_hexa()"> </textarea>
+        </div>
+
+        <div class="base">
+            <h3> Binary </h3>
+          <textarea type="text" id="value-binary" onkeyup="update_from_binary()" placeholder="" > </textarea>
+        </div>
+
+        <div class="base">
+            <h3> Decimal </h3>
+          <textarea type="text" id="value-dec" onkeyup="update_from_decimal()" placeholder=""> </textarea>
+        </div>
+    </section>
+
+  <section>
+      <br>
+      <h3> Other: </h3>
+
+      <div class="newBases">
+        <div class="container">
+            <p> Original base: </p>
+            <textarea type="text" id="ob" onkeyup="personalized_update()"> </textarea>
+        </div>
+
+        <div class="container">
+            <img src="img/transparent-arrow-hi.png" style="width:30%; height:30%;">
+        </div>
+
+        <div class="container">
+            <p> Final base: </p>
+            <textarea type="text" id="fb" onkeyup="personalized_update()"> </textarea>
+        </div>
+
+      </div>
+
+    <div class="newValues">
+
+        <div class="container" >
+            <p> Original value: </p>
+            <textarea type="text" id="ov" onkeyup="personalized_update()"> </textarea>
+        </div>
+
+        <div class="container">
+            <img src="img/transparent-arrow-hi.png" style="width:30%; height:30%;">
+        </div>
+
+        <div class="container">
+            <p> Final value: </p>
+             <textarea readonly type="text" id="fv"> </textarea>
+        </div>
+
+
+    </div>
+
+  </section>
+
+
+
+</body>
+
+
+</html>
